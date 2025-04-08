@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 import Footer from "./footer";
-
+import AppGame from "./AppGame";
 const ProductPage = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -237,6 +237,9 @@ const ProductPage = () => {
                   poster={getPlaceholderUrl(240, 427)}
                   onPlay={() => playReelVideo(index)}
                   onPause={() => setPlayingReelIndex(null)}
+                  playsInline
+                  disablePictureInPicture
+                  controlsList="nodownload"
                 >
                   <source src={url} type="video/mp4" />
                 </video>
@@ -278,7 +281,7 @@ const ProductPage = () => {
         </div>
 
         {/* Free In-App Games */}
-        <div className="free-games">
+        {/* <div className="free-games">
           <h2>Free In-App Games</h2>
           <div className="games-grid">
             {product.freeinapp.map((item, i) => (
@@ -288,7 +291,8 @@ const ProductPage = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
+        <AppGame />
 
         {/* Device Compatibility */}
         <div className="device-compatibility">

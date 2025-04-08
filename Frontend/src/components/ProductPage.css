@@ -886,60 +886,46 @@
   
   /* Reel Videos Section */
   .reel-videos-section {
-    margin: 2rem 0;
+    margin: 3rem 0;
+    padding: 0 1rem;
   }
   
   .reel-videos-section h2 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-bottom: 1.5rem;
     color: #1a202c;
+    text-align: center;
   }
   
   .reel-videos-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 1.5rem;
-    overflow-x: auto;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 1rem 0;
-    scrollbar-width: thin;
-    scrollbar-color: #cbd5e0 #f7fafc;
-    justify-content: center;
-  }
-  
-  .reel-videos-container::-webkit-scrollbar {
-    height: 6px;
-  }
-  
-  .reel-videos-container::-webkit-scrollbar-track {
-    background: #f7fafc;
-    border-radius: 4px;
-  }
-  
-  .reel-videos-container::-webkit-scrollbar-thumb {
-    background-color: #cbd5e0;
-    border-radius: 4px;
   }
   
   .reel-video-card {
-    min-width: 240px;
-    max-width: 240px;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
-  .reel-video-wrapper {
+  .reel-video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  .reel-video-card video {
     width: 100%;
     height: 427px;
-    overflow: hidden;
-  }
-  
-  .reel-video-player {
-    width: 100%;
-    aspect-ratio: 9/16;
     object-fit: cover;
+    border-radius: 12px;
     background-color: #f8f8f8;
-    max-height: 427px;
   }
   
   .reel-video-overlay {
@@ -954,19 +940,70 @@
     background-color: rgba(0, 0, 0, 0.2);
     cursor: pointer;
     z-index: 10;
+    border-radius: 12px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .reel-video-overlay:hover {
+    background-color: rgba(0, 0, 0, 0.3);
   }
   
   .reel-play-button {
-    width: 50px;
-    height: 50px;
-    background-color: rgba(123, 63, 228, 0.7);
+    width: 60px;
+    height: 60px;
+    background-color: rgba(123, 63, 228, 0.9);
     color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+  
+  .reel-play-button:hover {
+    transform: scale(1.1);
+    background-color: rgba(123, 63, 228, 1);
+  }
+  
+  @media (max-width: 768px) {
+    .reel-videos-container {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+  
+    .reel-video-card video,
+    .reel-video-overlay {
+      height: 355px;
+    }
+  
+    .reel-play-button {
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+    }
+  }
+  
+  @media (max-480px) {
+    .reel-videos-section {
+      margin: 2rem 0;
+    }
+  
+    .reel-videos-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+  
+    .reel-videos-container {
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.8rem;
+    }
+  
+    .reel-video-card video,
+    .reel-video-overlay {
+      height: 284px;
+    }
   }
   
   /* Product About Section */
