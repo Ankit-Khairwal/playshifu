@@ -1,8 +1,8 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const dotenv = require('dotenv');
-const Product = require('./product.model');
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const Product = require("./product.model");
 
 dotenv.config();
 
@@ -16,10 +16,13 @@ app.use(express.json());
 // MongoDB Connection
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/playshifu', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    const conn = await mongoose.connect(
+      "mongodb+srv://khairwalankit7:yadav@cluster0.qoym7ev.mongodb.net/playshifu",
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    );
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
     console.error(`Error: ${error.message}`);
@@ -28,7 +31,7 @@ const connectDB = async () => {
 };
 
 // Routes
-app.get('/api/product', async (req, res) => {
+app.get("/api/product", async (req, res) => {
   try {
     const product = await Product.findOne();
     res.json(product);
