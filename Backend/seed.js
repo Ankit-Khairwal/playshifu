@@ -233,10 +233,13 @@ const dummyProduct = {
 };
 
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/playshifu", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://khairwalankit7:yadav@cluster0.qoym7ev.mongodb.net/playshifu",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => {
     console.log("Connected to MongoDB");
     return Product.deleteMany({});
