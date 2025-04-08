@@ -1,11 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
-import './ProductPage.css';
-import {
-  Search,
-  ShoppingCart,
-  User,
-  ChevronDown,
-} from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
+import "./ProductPage.css";
+import { Search, ShoppingCart, User, ChevronDown } from "lucide-react";
 
 import Footer from "./footer";
 import AppGame from "./AppGame";
@@ -13,7 +8,7 @@ const ProductPage = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [activeMedia, setActiveMedia] = useState({ type: 'image', index: 0 });
+  const [activeMedia, setActiveMedia] = useState({ type: "image", index: 0 });
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [playingReelIndex, setPlayingReelIndex] = useState(null);
@@ -24,8 +19,10 @@ const ProductPage = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/product');
-        if (!response.ok) throw new Error('Failed to fetch product data');
+        const response = await fetch(
+          "https://playshifu-0qk1.onrender.com/api/product"
+        );
+        if (!response.ok) throw new Error("Failed to fetch product data");
         const data = await response.json();
         setProduct(data);
         if (data.videos?.length) setSelectedVideo(data.videos[0]);
@@ -40,7 +37,7 @@ const ProductPage = () => {
 
   const handleMediaSelect = (type, index) => {
     setActiveMedia({ type, index });
-    if (type === 'video') {
+    if (type === "video") {
       setSelectedVideo(product.videos[index]);
       setIsPlaying(false);
     }
@@ -76,7 +73,9 @@ const ProductPage = () => {
       {/* Announcement Bar */}
       <div className="announcement-bar">
         <div className="marquee">
-          <span>🎉 Special Offer: Get 25% off on all products! Use code: SHIFU25</span>
+          <span>
+            🎉 Special Offer: Get 25% off on all products! Use code: SHIFU25
+          </span>
           <span>🚚 Free Shipping on orders above $50</span>
           <span>🔥 New Junior Genius Pack Available Now!</span>
           <span>⏱️ Limited Time Offer - Buy 2 Get 1 Free</span>
@@ -87,21 +86,32 @@ const ProductPage = () => {
       <header className="header">
         <div className="header-container">
           <div className="header-left">
-            <div className="search-icon"><Search size={24} /></div>
+            <div className="search-icon">
+              <Search size={24} />
+            </div>
             <div className="country-selector">
-              <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" alt="India" className="country-flag" />
+              <img
+                src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg"
+                alt="India"
+                className="country-flag"
+              />
               <ChevronDown size={16} />
             </div>
           </div>
           <div className="logo">
-            <img src="https://www.playshifu.com/_next/image?url=https%3A%2F%2Fd3no6xaq2ua3a6.cloudfront.net%2Fimages%2Fbrand%2Fplayshifu-logo.webp&w=750&q=75" alt="PlayShifu" />
+            <img
+              src="https://www.playshifu.com/_next/image?url=https%3A%2F%2Fd3no6xaq2ua3a6.cloudfront.net%2Fimages%2Fbrand%2Fplayshifu-logo.webp&w=750&q=75"
+              alt="PlayShifu"
+            />
           </div>
           <div className="header-right">
             <div className="icon-btn cart-btn">
               <ShoppingCart size={24} />
               <span className="cart-count">0</span>
             </div>
-            <div className="icon-btn"><User size={24} /></div>
+            <div className="icon-btn">
+              <User size={24} />
+            </div>
           </div>
         </div>
       </header>
@@ -109,22 +119,40 @@ const ProductPage = () => {
       {/* Navigation */}
       <nav className="main-navigation">
         <ul className="nav-menu">
-          <li className="nav-item">Shop By Category <ChevronDown size={14} /></li>
-          <li className="nav-item">Shop By Age <ChevronDown size={14} /></li>
-          <li className="nav-item">Super Saver Deals <span className="sale-tag">25% Off</span></li>
-          <li className="nav-item">Birthday Gifts <span className="sale-tag">25% Off</span></li>
-          <li className="nav-item">Return Gifts <span className="sale-tag">30% Off</span></li>
+          <li className="nav-item">
+            Shop By Category <ChevronDown size={14} />
+          </li>
+          <li className="nav-item">
+            Shop By Age <ChevronDown size={14} />
+          </li>
+          <li className="nav-item">
+            Super Saver Deals <span className="sale-tag">25% Off</span>
+          </li>
+          <li className="nav-item">
+            Birthday Gifts <span className="sale-tag">25% Off</span>
+          </li>
+          <li className="nav-item">
+            Return Gifts <span className="sale-tag">30% Off</span>
+          </li>
           <li className="nav-item">Shop All</li>
-          <li className="nav-item">More <ChevronDown size={14} /></li>
+          <li className="nav-item">
+            More <ChevronDown size={14} />
+          </li>
         </ul>
       </nav>
 
       {/* Hero Section */}
       <div className="hero-section">
         <div className="hero-container">
-          <h1 className="hero-title">Educational toys that make learning fun!</h1>
-          <p className="hero-subtitle">Interactive toys combining physical play with digital experiences.</p>
-          <a href="#shop-now" className="hero-cta">Shop Now</a>
+          <h1 className="hero-title">
+            Educational toys that make learning fun!
+          </h1>
+          <p className="hero-subtitle">
+            Interactive toys combining physical play with digital experiences.
+          </p>
+          <a href="#shop-now" className="hero-cta">
+            Shop Now
+          </a>
         </div>
         <div className="hero-shapes">
           <div className="hero-shape shape-1"></div>
@@ -145,9 +173,12 @@ const ProductPage = () => {
         <div className="product-container">
           <div className="product-media">
             <div className="media-showcase">
-              {activeMedia.type === 'image' ? (
+              {activeMedia.type === "image" ? (
                 <div className="main-image">
-                  <img src={product.images[activeMedia.index]} alt={product.name} />
+                  <img
+                    src={product.images[activeMedia.index]}
+                    alt={product.name}
+                  />
                 </div>
               ) : (
                 <div className="main-video">
@@ -173,8 +204,12 @@ const ProductPage = () => {
               {product.images.map((img, i) => (
                 <div
                   key={i}
-                  className={`media-thumbnail ${activeMedia.type === 'image' && activeMedia.index === i ? 'active' : ''}`}
-                  onClick={() => handleMediaSelect('image', i)}
+                  className={`media-thumbnail ${
+                    activeMedia.type === "image" && activeMedia.index === i
+                      ? "active"
+                      : ""
+                  }`}
+                  onClick={() => handleMediaSelect("image", i)}
                 >
                   <img src={img} alt={`${product.name} ${i}`} />
                 </div>
@@ -193,7 +228,12 @@ const ProductPage = () => {
             <div className="rating-row">
               <div className="rating">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <span key={i} className={i < Math.floor(4.5) ? 'star filled' : 'star'}>★</span>
+                  <span
+                    key={i}
+                    className={i < Math.floor(4.5) ? "star filled" : "star"}
+                  >
+                    ★
+                  </span>
                 ))}
                 <span className="reviews">(237 Reviews)</span>
               </div>
@@ -210,7 +250,9 @@ const ProductPage = () => {
             </div>
             <div className="product-features">
               {product.features.map((feat, i) => (
-                <div key={i} className="product-feature">• {feat}</div>
+                <div key={i} className="product-feature">
+                  • {feat}
+                </div>
               ))}
             </div>
             <div className="button-container">
@@ -244,7 +286,10 @@ const ProductPage = () => {
                   <source src={url} type="video/mp4" />
                 </video>
                 {playingReelIndex !== index && (
-                  <div className="reel-video-overlay" onClick={() => playReelVideo(index)}>
+                  <div
+                    className="reel-video-overlay"
+                    onClick={() => playReelVideo(index)}
+                  >
                     <div className="reel-play-button">▶</div>
                   </div>
                 )}
@@ -298,9 +343,18 @@ const ProductPage = () => {
         <div className="device-compatibility">
           <h2>Device Compatibility</h2>
           <div className="device-grid">
-            <div className="device-card"><h3>Android</h3><p>Android 6.0+ with Bluetooth 4.1</p></div>
-            <div className="device-card"><h3>iOS</h3><p>iOS 11+ with Bluetooth 4.1</p></div>
-            <div className="device-card"><h3>Amazon Fire</h3><p>Fire OS 5.0+ with Bluetooth 4.1</p></div>
+            <div className="device-card">
+              <h3>Android</h3>
+              <p>Android 6.0+ with Bluetooth 4.1</p>
+            </div>
+            <div className="device-card">
+              <h3>iOS</h3>
+              <p>iOS 11+ with Bluetooth 4.1</p>
+            </div>
+            <div className="device-card">
+              <h3>Amazon Fire</h3>
+              <p>Fire OS 5.0+ with Bluetooth 4.1</p>
+            </div>
           </div>
         </div>
 
